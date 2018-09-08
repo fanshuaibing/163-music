@@ -9,9 +9,8 @@
 <div class="page">
     <aside>
       <div class="newSong">
-        新建歌曲
       </div>
-      <div id="songList-container">
+      <div id="songList-container">     
       </div>
       <div class="uploadArea">
         <div id="uploadContainer" class="draggable">
@@ -23,31 +22,8 @@
       </div>
     </aside>
      <main>
-      <h1>新建歌曲</h1>
-      <form class="form">
-        <div class="row">
-          <label>
-          歌名
-          </label>
-          <input type="text">
-        </div>
-        <div class="row">
-          <label>
-          歌手
-          </label>
-          <input type="text">
-        </div>
-        <div class="row">
-          <label>
-          外链
-          </label>
-          <input type="text">
-        </div>
-        <div class="row actions">
-          <button type="submit">保存</button>
-        </div>
-      </form>
-    </main>
+     
+     </main>
 </div>
   <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
   <script>
@@ -60,6 +36,7 @@ AV.init({
 });
 
   </script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../vender/js/moxie.js"></script>
   <script src="../node_modules/plupload/js/plupload.min.js"></script>
   <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
@@ -100,7 +77,8 @@ AV.init({
           // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
            var domain = up.getOption('domain');
            var response = JSON.parse(info.response);
-           var sourceLink ='//'+ domain +'/'+ encodeURIComponent(response.key); 
+           var sourceLink ='//'+ domain +'/'+ encodeURIComponent(response.key);
+           console.log('url')
            console.log(sourceLink)
            //获取上传成功后的文件的Url
         },
@@ -113,5 +91,10 @@ AV.init({
       }
     });
   </script>
+
+  <script src="./js/song-form.js"></script>
+  <script src="./js/song-list.js"></script>
+  <script src="./js/new-song.js"></script>
+  <script src="./js/upload-song.js"></script>
 </body>
 </html>
