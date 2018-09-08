@@ -52,7 +52,7 @@
           			var sourceLink ='//'+ domain +'/'+ encodeURIComponent(response.key);
           			console.log('url')
           			console.log(sourceLink)
-          			window.eventHub.emit('uploac',{
+          			window.eventHub.emit('upload',{
           				url: sourceLink,
           				name: response.key
           			})

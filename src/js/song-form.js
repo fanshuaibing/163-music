@@ -92,4 +92,5 @@
     }
   }
   controller.init(view, model)
+
 }
