@@ -52,6 +52,10 @@
           			var sourceLink ='//'+ domain +'/'+ encodeURIComponent(response.key);
           			console.log('url')
           			console.log(sourceLink)
+          			window.eventHub.emit('uploac',{
+          				url: sourceLink,
+          				name: response.key
+          			})
            			//获取上传成功后的文件的Url
            		},
            		'Error': function(up, err, errTip) {
