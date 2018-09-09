@@ -5,30 +5,30 @@
       this.$el = $(this.el)
     },
     template: `
-      <h1>新建歌曲</h1>
-      <form class="form">
-        <div class="row">
-          <label>
-          歌名
-          </label>
-          <input name="name" type="text" value="__name__">
-        </div>
-        <div class="row">
-          <label>
-          歌手
-          </label>
-          <input name="singer" type="text" value="__singer__">
-        </div>
-        <div class="row">
-          <label>
-          外链
-          </label>
-          <input name="url" type="text" value="__url__">
-        </div>
-        <div class="row actions">
-          <button type="submit">保存</button>
-        </div>
-      </form>
+    <h1>新建歌曲</h1>
+    <form class="form">
+    <div class="row">
+    <label>
+    歌名
+    </label>
+    <input name="name" type="text" value="__name__">
+    </div>
+    <div class="row">
+    <label>
+    歌手
+    </label>
+    <input name="singer" type="text" value="__singer__">
+    </div>
+    <div class="row">
+    <label>
+    外链
+    </label>
+    <input name="url" type="text" value="__url__">
+    </div>
+    <div class="row actions">
+    <button type="submit">保存</button>
+    </div>
+    </form>
     `,
     render(data = {}){
       let placeholders = ['name', 'url', 'singer', 'id']
@@ -81,8 +81,8 @@
           data[string] = this.view.$el.find(`[name="${string}"]`).val()
         })
         this.model.create(data)
-          .then(()=>{
-            this.view.reset()
+        .then(()=>{
+          this.view.reset()
             //this.model.data === 'ADDR 108'
             let string = JSON.stringify(this.model.data)
             let object = JSON.parse(string)
