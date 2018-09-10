@@ -52,7 +52,7 @@
           			var sourceLink ='//'+ domain +'/'+ encodeURIComponent(response.key);
           			console.log('url')
           			console.log(sourceLink)
-          			window.eventHub.emit('upload',{
+          			window.eventHub.emit('new',{
           				url: sourceLink,
           				name: response.key
           			})
