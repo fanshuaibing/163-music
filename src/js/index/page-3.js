@@ -1,6 +1,6 @@
 {
-  let view = {
-    el: '.page-3',
+  let view ={
+    el:".page-3",
     init(){
       this.$el = $(this.el)
     },
@@ -11,23 +11,23 @@
       this.$el.removeClass('active')
     }
   }
-  let model = {}
-  let controller = {
-    init(view, model){
-      this.view = view
+  let model ={}
+  let controller ={
+    init(view,model){
+      this.view =view
       this.view.init()
-      this.model = model
+      this.model =model
       this.bindEventHub()
     },
     bindEventHub(){
-      window.eventHub.on('selectTab', (tabName)=>{
+      window.eventHub.on('selectTab',(tabName)=>{
         if(tabName === 'page-3'){
           this.view.show()
-        }else{
+        }else {
           this.view.hide()
         }
       })
     }
   }
-  controller.init(view, model)
+  controller.init(view,model)
 }
