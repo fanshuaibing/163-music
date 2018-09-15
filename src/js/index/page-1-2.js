@@ -3,7 +3,6 @@
     el: 'section.songs',
     template:`
         <li>
-          
           <h3>{{song.name}}</h3>
           <p>
             <svg class="icon icon-sq">

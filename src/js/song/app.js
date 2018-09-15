@@ -1,25 +1,28 @@
 {
   let view = {
     el: '#app',
-    template: `
-      <div>
-        <audio  src={{url}}></audio>
-        <button class="play">播放</button>
-        <button class="pause">暂停</button>
-      </div> 
-    `,
-    render(data) {
-      $(this.el).html(this.template.replace('{{url}}', data.song.url))
-
+    render(data){
+      let {song,status} = data
+      $(this.el).css('background-image',`url(${song.cover})`)
+      $(this.el).find('img.cover').attr('src',song.cover)
+      if($(this.el).find('audio').attr('src') !== song.url){
+        $(this.el).find('audio').attr('src',song.url)
+      }
+      if(status === 'playing'){
+        $(this.el).find('disc-container').addClass('playing')
+      }else{
+        $(this.el).find('disc-container').removeClass('pause')
+      }
     },
     play(){
-      let audio = $(this.el).find('audio')[0]
-      audio.play()
+      $(this.el).find('.disc-container').addClass('playing')
+      $(this.el).find('audio')[0].play()
     },
     pause(){
-      let audio = $(this.el).find('audio')[0]
-      audio.pause()
+      $(this.el).find('.disc-container').removeClass('playing')
+      $(this.el).find('audio')[0].pause()
     }
+
   }
   let model = {
     data: {
@@ -28,7 +31,8 @@
         name: '',
         singer: '',
         url: ''
-      }
+      },
+      status: 'pause'
     },
     get(id) {
       var query = new AV.Query('Song')
@@ -49,13 +53,18 @@
       this.bindEvents()
 
     },
-    bindEvents() {
-      $(this.view.el).on('click', '.play', () => {
+    bindEvents(){
+      $(this.view.el).on('click','.icon-play',()=>{
+        this.model.data.status = 'playing'
+        this.view.render(this.model.data)
         this.view.play()
       })
-      $(this.view.el).on('click', '.pause', () => {
+      $(this.view.el).on('click','.icon-pause',()=>{
+        this.model.data.status = 'pause'
+        this.view.render(this.model.data)
         this.view.pause()
       })
+
     },
     getSongId() {
       let search = window.location.search
