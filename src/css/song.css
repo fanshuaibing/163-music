@@ -38,10 +38,11 @@
   margin-top: 20px;
 }
 .song-description h1{
-  color: white;
+  color: black;
   font-size: 18px;
 }
 .song-description p{
+  color: #999999;
   font-size: 14px;
   line-height: 24px;
 }
@@ -53,7 +54,7 @@
   overflow: hidden;
 }
 .song-description p.active{
-  color: white;
+  color: black;
 }
 .page > .links{
   display: flex;
